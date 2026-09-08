@@ -1,0 +1,176 @@
+/* ============================================================
+   Fortnite — Custom Theme für Jellystream
+   Einfügen unter: Einstellungen → Aussehen → Eigenes CSS
+   ============================================================ */
+
+:root {
+  /* Grundton: Deep Island Night (Dunkelblau/Violett) */
+  --bg:        #0b0e17;
+  --bg-rgb:    11, 14, 23;      /* Für Transparenzen und Overlays */
+  --bg-2:      #121726;
+  --surface:   #182033;
+  --surface-2: #222d47;
+  --surface-3: #2d3b5c;
+  --sidebar:   #070910;
+
+  /* Akzente: V-Bucks Cyan & Epic Magenta */
+  --accent:      #00f0ff;        /* V-Bucks Light Cyan */
+  --accent-2:    #ff007f;        /* Battle Pass Pink/Magenta */
+  --accent-soft: rgba(0, 240, 255, 0.2);
+  --on-accent:   #000000;
+  --on-bright:   #0b0e17;
+
+  /* Text & Farben */
+  --text:    #ffffff;
+  --muted:   #8a99ad;
+  --muted-2: #566478;
+
+  --border:    rgba(0, 240, 255, 0.2);
+  --border-2:  rgba(255, 0, 127, 0.3);
+  --danger:    #ff2a2a;        /* Storm Damage Red */
+
+  /* Form & Dynamic Skewing */
+  --radius:    6px;            /* Leicht abgerundete, knackige Ecken */
+  --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.8);
+}
+
+/* ============================================================
+   Hero / Backdrop: Storm & Island Fade
+   ============================================================ */
+.backdropContainer {
+  position: relative;
+}
+
+/* Verlauf nach unten in die Dunkelheit */
+.backdropContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--bg-rgb), 0) 0%,
+    rgba(var(--bg-rgb), 0.5) 50%,
+    var(--bg) 100%
+  ) !important;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Verlauf nach links mit starker Abdunklung für Lesbarkeit */
+.backdropContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(11, 14, 23, 0.95) 0%,
+    rgba(11, 14, 23, 0.6) 40%,
+    rgba(var(--bg-rgb), 0) 75%
+  ) !important;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.backdropImage {
+  z-index: 0;
+}
+
+/* ============================================================
+   Kacheln: Item Shop Rarity Border & Tilt Effect
+   ============================================================ */
+.card-inner {
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover .card-inner {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.5), 0 0 35px rgba(255, 0, 127, 0.3);
+  transform: translateY(-5px) scale(1.04) rotate(-1deg);
+}
+
+/* ============================================================
+   Navigation (Lobby Menu Style)
+   ============================================================ */
+.navbar,
+.navbar.solid {
+  background-color: rgba(11, 14, 23, 0.85) !important;
+  backdrop-filter: blur(15px);
+  border-bottom: 2px solid var(--border);
+}
+
+.nav-links a,
+.nav-links button {
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 14px;
+  font-weight: 800;
+  transition: all 0.15s ease;
+}
+
+.nav-links a:hover,
+.nav-links button:hover {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+}
+
+.nav-links a.active,
+.nav-links button.active {
+  background: var(--accent);
+  color: #000000;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+  border-radius: var(--radius);
+  transform: skewX(-10deg);
+}
+
+/* ============================================================
+   Knöpfe & Typografie (Yellow Victory & Epic Buttons)
+   ============================================================ */
+.play-btn {
+  background: linear-gradient(135deg, #ffe600 0%, #ffaa00 100%) !important; /* Victory Yellow */
+  color: #000000 !important;
+  border-radius: var(--radius);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 15px rgba(255, 230, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+.play-btn:hover {
+  transform: scale(1.05) skewX(-5deg);
+  box-shadow: 0 6px 20px rgba(255, 230, 0, 0.7);
+}
+
+.outline-btn {
+  background: var(--surface-2) !important;
+  color: #ffffff !important;
+  border-radius: var(--radius);
+  border: 2px solid var(--accent-2);
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.outline-btn:hover {
+  background: var(--accent-2) !important;
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.6);
+}
+
+.row-header h3,
+.section-title {
+  font-style: italic;
+  letter-spacing: 0.05em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ffffff;
+}
