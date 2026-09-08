@@ -1,0 +1,177 @@
+/* ============================================================
+   Minecraft — Custom Theme für Jellystream
+   Einfügen unter: Einstellungen → Aussehen → Eigenes CSS
+   ============================================================ */
+
+:root {
+  /* Grundton: Bedrock / Deep Obsidian & Stone Schwarz */
+  --bg:        #121212;
+  --bg-rgb:    18, 18, 18;      /* Für Transparenzen und Overlays */
+  --bg-2:      #1f1f1f;
+  --surface:   #2b2b2b;        /* Smooth Stone Interface */
+  --surface-2: #3a3a3a;
+  --surface-3: #4a4a4a;
+  --sidebar:   #0a0a0a;
+
+  /* Akzente: Diamond Blue & Emerald Green */
+  --accent:      #55ffff;        /* Diamond Blue */
+  --accent-2:    #55ff55;        /* Emerald Green */
+  --accent-soft: rgba(85, 255, 255, 0.15);
+  --on-accent:   #000000;
+  --on-bright:   #121212;
+
+  /* Text & Farben */
+  --text:    #ffffff;
+  --muted:   #aaaaaa;
+  --muted-2: #555555;
+
+  --border:    #3c3c3c;
+  --border-2:  #555555;
+  --danger:    #ff5555;        /* Redstone Red */
+
+  /* Form & Struktur: Pixelige, kantige Konturen */
+  --radius:    0px;            /* Blockig - keine abgerundeten Ecken */
+  --shadow-lg: 0 0 0 4px #000000, 0 16px 30px rgba(0, 0, 0, 0.9);
+}
+
+/* ============================================================
+   Hero / Backdrop: Block-Atmosphäre
+   ============================================================ */
+.backdropContainer {
+  position: relative;
+}
+
+/* Verlauf nach unten in die Bedrock-Ebene */
+.backdropContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--bg-rgb), 0) 0%,
+    rgba(var(--bg-rgb), 0.4) 50%,
+    var(--bg) 100%
+  ) !important;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Verlauf nach links für beste Lesbarkeit */
+.backdropContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(18, 18, 18, 0.95) 0%,
+    rgba(18, 18, 18, 0.5) 40%,
+    rgba(var(--bg-rgb), 0) 75%
+  ) !important;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.backdropImage {
+  z-index: 0;
+}
+
+/* ============================================================
+   Kacheln: Item-Frame Optik mit Block-Border
+   ============================================================ */
+.card-inner {
+  border-radius: 0px;
+  border: 2px solid #3c3c3c;
+  box-shadow: inset -2px -2px 0px 0px #1a1a1a, inset 2px 2px 0px 0px #555555;
+  transition: all 0.15s steps(3);
+}
+
+.card:hover .card-inner {
+  border-color: var(--accent);
+  box-shadow: inset -2px -2px 0px 0px #00aaaa, inset 2px 2px 0px 0px #ffffff, 0 0 15px rgba(85, 255, 255, 0.4);
+  transform: translateY(-4px);
+}
+
+/* ============================================================
+   Navigation (Hotbar-Stil)
+   ============================================================ */
+.navbar,
+.navbar.solid {
+  background-color: #212121 !important;
+  border-bottom: 4px solid #000000;
+  box-shadow: inset 0 2px 0 #555555;
+}
+
+.nav-links a,
+.nav-links button {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+  font-weight: 700;
+  color: #aaaaaa;
+}
+
+.nav-links a:hover,
+.nav-links button:hover {
+  color: #ffffff;
+  text-shadow: 2px 2px 0px #000000;
+}
+
+.nav-links a.active,
+.nav-links button.active {
+  background: #3c3c3c;
+  color: var(--accent);
+  border: 2px solid #ffffff;
+  box-shadow: inset -2px -2px 0px #1a1a1a;
+  text-shadow: 2px 2px 0px #000000;
+}
+
+/* ============================================================
+   Knöpfe & Buttons (Minecraft UI Button Style)
+   ============================================================ */
+.play-btn {
+  background: #707070 !important;
+  color: #ffffff !important;
+  border-radius: 0px;
+  border: 2px solid #000000;
+  box-shadow: inset -2px -2px 0px #383838, inset 2px 2px 0px #a8a8a8;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px #000000;
+  transition: none;
+}
+
+.play-btn:hover {
+  background: #52a034 !important; /* Grass Green Hover */
+  box-shadow: inset -2px -2px 0px #2a521a, inset 2px 2px 0px #7ee050;
+  color: #ffffff !important;
+}
+
+.outline-btn {
+  background: #313131 !important;
+  color: #ffffff !important;
+  border-radius: 0px;
+  border: 2px solid #000000;
+  box-shadow: inset -2px -2px 0px #1a1a1a, inset 2px 2px 0px #555555;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px #000000;
+}
+
+.outline-btn:hover {
+  background: #4a4a4a !important;
+  box-shadow: inset -2px -2px 0px #2b2b2b, inset 2px 2px 0px #777777;
+}
+
+.row-header h3,
+.section-title {
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px #000000;
+}
